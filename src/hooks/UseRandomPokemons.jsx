@@ -1,13 +1,27 @@
 import { useState, useEffect } from 'react'
+import UseRandomIdsPokemons from './UseRandomIdsPokemons'
 import getRandomPokemon from '../services/getRandomPokemon'
 
 export default function UseRandomPokemons () {
   const [pokemons, setPokemons] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
+  const { randomIds, loadingIds } = UseRandomIdsPokemons()
 
   useEffect(() => {
+    if (!loadingIds) {
+      randomIds.forEach(idPokemon => {
+        getRandomPokemon({ idPokemon })
+          .then(pokemon => {
+            setPokemons(prevPokemons => [...prevPokemons, pokemon, pokemon])
+          })
+      })
 
-  }, [])
+      setLoading(false)
+    }
+  }, [loadingIds])
 
-  return { pokemons, loading }
+  return {
+    pokemons: pokemons.sort(() => 0.5 - Math.random()),
+    loading
+  }
 }
