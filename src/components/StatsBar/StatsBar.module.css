@@ -1,0 +1,9 @@
+.StatsBar {
+  width: 90%;
+  margin: auto;
+  padding: 15px 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}

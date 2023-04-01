@@ -12,7 +12,10 @@ export default function UseRandomPokemons () {
       randomIds.forEach(idPokemon => {
         getRandomPokemon({ idPokemon })
           .then(pokemon => {
-            setPokemons(prevPokemons => [...prevPokemons, pokemon, pokemon])
+            const pokemonFinal1 = { tag: `${pokemon.name}${1}`, ...pokemon }
+            const pokemonFinal2 = { tag: `${pokemon.name}${2}`, ...pokemon }
+
+            setPokemons(prevPokemons => [...prevPokemons, pokemonFinal1, pokemonFinal2])
           })
       })
 
