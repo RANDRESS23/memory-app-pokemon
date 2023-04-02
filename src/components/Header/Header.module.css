@@ -13,3 +13,13 @@
 .Header img {
   width: 90px;
 }
+
+.IconGitHub {
+  color: #000;
+  font-size: 30px;
+  transition: .3s ease all;
+}
+
+.IconGitHub:hover {
+  color: #ff3e31;
+}

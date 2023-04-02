@@ -9,15 +9,15 @@ import ReactCanvasConfetti from 'react-canvas-confetti'
 import { confettiStyles } from '../../constants/ConfettiStyles'
 import styles from './PokemonBoard.module.css'
 
-export default function PokemonBoard () {
-  const { pokemons, loading } = UseRandomPokemons()
+export default function PokemonBoard ({ amountOfChanges }) {
+  const { pokemons, loading } = UseRandomPokemons({ amountOfChanges })
   const { pokemonsActive, setPokemonsActive } = UsePokemonsActive({ pokemons })
   const {
     comparedPokemons,
     setComparedPokemons,
     enableCard
   } = UseComparePokemons({ setPokemonsActive, pokemons, pokemonsActive })
-  const { winnerUser } = UseWinnerUser({ pokemonsActive })
+  const { winnerUser, setWinnerUser } = UseWinnerUser({ pokemonsActive })
   const { getInstance, fire } = UseConfettiWinner()
 
   const handleActivePokemon = ({ tag }) => {
@@ -45,6 +45,8 @@ export default function PokemonBoard () {
     fire()
     setTimeout(() => fire(), 500)
     setTimeout(() => fire(), 1000)
+
+    setWinnerUser(false)
   }
 
   return (

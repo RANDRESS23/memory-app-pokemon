@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'Digital 7';
+  src: url('../../assets/font/digital-7.ttf') format('woff2');
+  font-weight: 700;
+}
+
+.Counter {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.Icon {
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Clock {
+  font-size: 25px;
+  font-family: 'Digital 7', Arial;
+}

@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react'
 import UseRandomIdsPokemons from './UseRandomIdsPokemons'
 import getRandomPokemon from '../services/getRandomPokemon'
 
-export default function UseRandomPokemons () {
+export default function UseRandomPokemons ({ amountOfChanges }) {
   const [pokemons, setPokemons] = useState([])
   const [loading, setLoading] = useState(false)
-  const { randomIds, loadingIds } = UseRandomIdsPokemons()
+  const { randomIds, loadingIds } = UseRandomIdsPokemons({ amountOfChanges })
 
   useEffect(() => {
+    setPokemons([])
+
     if (!loadingIds) {
       randomIds.forEach(idPokemon => {
         getRandomPokemon({ idPokemon })
@@ -21,7 +23,7 @@ export default function UseRandomPokemons () {
 
       setLoading(false)
     }
-  }, [loadingIds])
+  }, [randomIds, loadingIds])
 
   return { pokemons, loading }
 }

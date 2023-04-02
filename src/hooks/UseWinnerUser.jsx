@@ -13,5 +13,5 @@ export default function UseWinnerUser ({ pokemonsActive }) {
     }
   }, [pokemonsActive])
 
-  return { winnerUser }
+  return { winnerUser, setWinnerUser }
 }
