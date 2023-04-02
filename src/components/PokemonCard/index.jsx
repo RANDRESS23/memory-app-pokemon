@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { typeColors } from '../../constants/TypeColorsPokemon'
 import pokeball from '../../assets/img/pokeball.png'
 import styles from './PokemonCard.module.css'
@@ -9,9 +8,9 @@ export default function PokemonCard ({ tag, name, image, principalType, isActive
       {
         isActive
           ? (
-            <div className={styles.Card} style={{ backgroundColor: typeColors[principalType] }}>
+            <button className={styles.Card} style={{ backgroundColor: typeColors[principalType] }}>
               <img src={image} alt={name} />
-            </div>
+            </button>
             )
           : (
             <button

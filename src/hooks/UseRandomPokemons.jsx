@@ -15,7 +15,7 @@ export default function UseRandomPokemons () {
             const pokemonFinal1 = { tag: `${pokemon.name}${1}`, ...pokemon }
             const pokemonFinal2 = { tag: `${pokemon.name}${2}`, ...pokemon }
 
-            setPokemons(prevPokemons => [...prevPokemons, pokemonFinal1, pokemonFinal2])
+            setPokemons(prevPokemons => [...prevPokemons, pokemonFinal1, pokemonFinal2].sort(() => 0.5 - Math.random()))
           })
       })
 
@@ -23,8 +23,5 @@ export default function UseRandomPokemons () {
     }
   }, [loadingIds])
 
-  return {
-    pokemons: pokemons.sort(() => 0.5 - Math.random()),
-    loading
-  }
+  return { pokemons, loading }
 }

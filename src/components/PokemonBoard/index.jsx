@@ -1,74 +1,35 @@
-import { useState, useEffect } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
 import UseRandomPokemons from '../../hooks/UseRandomPokemons'
+import UsePokemonsActive from '../../hooks/UsePokemonsActive'
+import UseComparePokemons from '../../hooks/UseComparePokemons'
 import PokemonCard from '../PokemonCard'
 import styles from './PokemonBoard.module.css'
 
 export default function PokemonBoard () {
-  const [comparedPokemons, setComparedPokemons] = useState({
-    firstPokemon: null,
-    secondPokemon: null
-  })
-  const [pokemonsActive, setPokemonsActive] = useState({})
   const { pokemons, loading } = UseRandomPokemons()
-
-  useEffect(() => {
-    const allPokemonsInactive = {}
-
-    pokemons.forEach(pokemon => {
-      allPokemonsInactive[pokemon.tag] = false
-    })
-
-    setPokemonsActive(allPokemonsInactive)
-  }, [pokemons])
+  const { pokemonsActive, setPokemonsActive } = UsePokemonsActive({ pokemons })
+  const {
+    comparedPokemons,
+    setComparedPokemons,
+    enableCard
+  } = UseComparePokemons({ setPokemonsActive, pokemons, pokemonsActive })
 
   const handleActivePokemon = ({ tag }) => {
     const { firstPokemon, secondPokemon } = comparedPokemons
-    // console.log({ pokemonsActive })
-    if (firstPokemon === null && !pokemonsActive[tag]) {
+    if ((!firstPokemon && !pokemonsActive[tag]) || (!secondPokemon && !pokemonsActive[tag])) {
       setPokemonsActive({
         ...pokemonsActive,
         [tag]: true
       })
 
+      console.log('a: ', comparedPokemons)
       setComparedPokemons({
-        firstPokemon: tag,
-        secondPokemon
-      })
-    } else if (secondPokemon === null && !pokemonsActive[tag]) {
-      setPokemonsActive({
-        ...pokemonsActive,
-        [tag]: true
-      })
-
-      setComparedPokemons({
-        firstPokemon,
-        secondPokemon: tag
+        firstPokemon: !firstPokemon ? tag : firstPokemon,
+        secondPokemon: (!secondPokemon && firstPokemon) ? tag : secondPokemon
       })
     }
+    console.log('d: ', comparedPokemons)
   }
-
-  useEffect(() => {
-    const { firstPokemon, secondPokemon } = comparedPokemons
-    console.log(comparedPokemons)
-    console.log({ pokemonsActive })
-    // if (firstPokemon !== null && secondPokemon !== null) {
-    //   const firstPokemonActive = pokemons.find(pokemon => pokemon.tag === firstPokemon)
-    //   const secondPokemonActive = pokemons.find(pokemon => pokemon.tag === secondPokemon)
-
-    //   if (firstPokemonActive.name === secondPokemonActive.name) {
-    //     setTimeout(() => {
-    //       setComparedPokemons({
-    //         firstPokemon: null,
-    //         secondPokemon: null
-    //       })
-    //     }, 1000)
-    //   } else {
-    //     setTimeout(() => {
-
-    //     }, 1000)
-    //   }
-    // }
-  }, [comparedPokemons])
 
   if (loading) return <div>Loading...</div>
 
@@ -84,11 +45,16 @@ export default function PokemonBoard () {
               image={pokemon.sprites.front_default}
               principalType={pokemon.types[0].type.name}
               isActive={pokemonsActive[pokemon.tag]}
-              handleActivePokemon={handleActivePokemon}
+              handleActivePokemon={
+                enableCard
+                  ? handleActivePokemon
+                  : () => { toast.error('Wait for the cards to hide!.') }
+              }
             />
           )
         })
       }
+      <Toaster />
     </div>
   )
 }
