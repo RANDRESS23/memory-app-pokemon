@@ -2,7 +2,11 @@ import toast, { Toaster } from 'react-hot-toast'
 import UseRandomPokemons from '../../hooks/UseRandomPokemons'
 import UsePokemonsActive from '../../hooks/UsePokemonsActive'
 import UseComparePokemons from '../../hooks/UseComparePokemons'
+import UseWinnerUser from '../../hooks/UseWinnerUser'
+import UseConfettiWinner from '../../hooks/UseConfettiWinner'
 import PokemonCard from '../PokemonCard'
+import ReactCanvasConfetti from 'react-canvas-confetti'
+import { confettiStyles } from '../../constants/ConfettiStyles'
 import styles from './PokemonBoard.module.css'
 
 export default function PokemonBoard () {
@@ -13,6 +17,8 @@ export default function PokemonBoard () {
     setComparedPokemons,
     enableCard
   } = UseComparePokemons({ setPokemonsActive, pokemons, pokemonsActive })
+  const { winnerUser } = UseWinnerUser({ pokemonsActive })
+  const { getInstance, fire } = UseConfettiWinner()
 
   const handleActivePokemon = ({ tag }) => {
     const { firstPokemon, secondPokemon } = comparedPokemons
@@ -22,16 +28,24 @@ export default function PokemonBoard () {
         [tag]: true
       })
 
-      console.log('a: ', comparedPokemons)
       setComparedPokemons({
         firstPokemon: !firstPokemon ? tag : firstPokemon,
         secondPokemon: (!secondPokemon && firstPokemon) ? tag : secondPokemon
       })
     }
-    console.log('d: ', comparedPokemons)
   }
 
   if (loading) return <div>Loading...</div>
+
+  if (winnerUser) {
+    toast.success('Congratulations!', {
+      duration: 4000
+    })
+
+    fire()
+    setTimeout(() => fire(), 500)
+    setTimeout(() => fire(), 1000)
+  }
 
   return (
     <div className={styles.Container}>
@@ -55,6 +69,7 @@ export default function PokemonBoard () {
         })
       }
       <Toaster />
+      <ReactCanvasConfetti refConfetti={getInstance} style={confettiStyles} />
     </div>
   )
 }
