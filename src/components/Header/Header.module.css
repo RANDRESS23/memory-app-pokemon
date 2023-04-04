@@ -1,7 +1,13 @@
+@font-face {
+  font-family: 'Pokemon Solid';
+  src: url('../../assets/font/pokemonsolid.ttf') format('woff2');
+  font-weight: 700;
+}
+
 .Header {
   width: 100%;
   background-color: #fff;
-  padding: 15px 40px;
+  padding: 10px 40px;
   margin-bottom: 20px;
   border-bottom: 1px solid rgba(100, 100, 111, 0.5);
   display: flex;
@@ -10,8 +16,24 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-.Header img {
-  width: 90px;
+.TitleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+}
+
+.Title {
+  font-family: 'Pokemon Solid', Arial;
+  font-size: 20px;
+  color: #feca1b;
+  text-shadow: 2px 0 #3761a8, -2px 0 #3761a8, 0 2px #3761a8, 0 -2px #3761a8,
+               1px 1px #3761a8, -1px -1px #3761a8, 1px -1px #3761a8, -1px 1px #3761a8;
+}
+
+.Charizard {
+  width: 45px;
+  transform: rotate3d(0, 1, 0, 180deg);
 }
 
 .IconGitHub {
