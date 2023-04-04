@@ -3,6 +3,7 @@ import PokemonBoard from '../../components/PokemonBoard'
 import Header from '../../components/Header'
 import styles from './Home.module.css'
 import StatsBar from '../../components/StatsBar'
+import Footer from '../../components/Footer'
 
 export default function Home () {
   const [amountOfChanges, setAmountOfChanges] = useState(0)
@@ -21,6 +22,7 @@ export default function Home () {
         amountOfChanges={amountOfChanges}
         setStopClock={setStopClock}
       />
+      <Footer />
     </div>
   )
 }

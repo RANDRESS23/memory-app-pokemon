@@ -27,8 +27,8 @@
   font-family: 'Pokemon Solid', Arial;
   font-size: 20px;
   color: #feca1b;
-  text-shadow: 2px 0 #3761a8, -2px 0 #3761a8, 0 2px #3761a8, 0 -2px #3761a8,
-               1px 1px #3761a8, -1px -1px #3761a8, 1px -1px #3761a8, -1px 1px #3761a8;
+  text-shadow: 2px 0 #315491, -2px 0 #315491, 0 2px #315491, 0 -2px #315491,
+               1px 1px #315491, -1px -1px #315491, 1px -1px #315491, -1px 1px #315491;
 }
 
 .Charizard {
