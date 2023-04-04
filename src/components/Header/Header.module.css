@@ -45,3 +45,21 @@
 .IconGitHub:hover {
   color: #ff3e31;
 }
+
+@media (min-width: 640px) { 
+  .Header {
+    padding: 10px 60px;
+  }
+}
+
+@media (min-width: 1024px) { 
+  .Header {
+    padding: 10px 80px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .Header {
+    padding: 10px 100px;
+  }
+}

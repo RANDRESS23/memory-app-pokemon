@@ -5,3 +5,9 @@
   align-items: center;
   width: 100vw;
 }
+
+@media (min-width: 640px) { 
+  .Container {
+    height: 100vh;
+  }
+}
