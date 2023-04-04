@@ -6,7 +6,7 @@ export default function Header () {
   return (
     <div className={styles.Header}>
       <img src={logoRandress} alt='logo-randress' />
-      <a href='#'>
+      <a href='https://github.com/RANDRESS23/memory-app-pokemon' target='__blank'>
         <FaGithub className={styles.IconGitHub} />
       </a>
     </div>

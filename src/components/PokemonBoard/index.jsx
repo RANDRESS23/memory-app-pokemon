@@ -9,7 +9,7 @@ import ReactCanvasConfetti from 'react-canvas-confetti'
 import { confettiStyles } from '../../constants/ConfettiStyles'
 import styles from './PokemonBoard.module.css'
 
-export default function PokemonBoard ({ amountOfChanges }) {
+export default function PokemonBoard ({ amountOfChanges, setStopClock }) {
   const { pokemons, loading } = UseRandomPokemons({ amountOfChanges })
   const { pokemonsActive, setPokemonsActive } = UsePokemonsActive({ pokemons })
   const {
@@ -41,6 +41,8 @@ export default function PokemonBoard ({ amountOfChanges }) {
     toast.success('Congratulations!', {
       duration: 4000
     })
+
+    setStopClock(true)
 
     fire()
     setTimeout(() => fire(), 500)

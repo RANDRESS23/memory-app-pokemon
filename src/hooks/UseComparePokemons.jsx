@@ -25,7 +25,7 @@ export default function UseComparePokemons ({ setPokemonsActive, pokemons, pokem
           })
 
           setEnableCard(true)
-        }, 2000)
+        }, 1000)
       } else setEnableCard(true)
 
       setComparedPokemons({

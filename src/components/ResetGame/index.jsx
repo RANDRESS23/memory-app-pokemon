@@ -2,7 +2,7 @@ import toast, { Toaster } from 'react-hot-toast'
 import { VscDebugRestart } from 'react-icons/vsc'
 import styles from './ResetGame.module.css'
 
-export default function ResetGame ({ setAmountOfChanges }) {
+export default function ResetGame ({ setAmountOfChanges, setStopClock }) {
   const handleResetGame = () => {
     toast((t) => (
       <span className={styles.Alert}>
@@ -11,6 +11,7 @@ export default function ResetGame ({ setAmountOfChanges }) {
           <button
             onClick={() => {
               setAmountOfChanges(prevAmountOfChanges => prevAmountOfChanges + 1)
+              setStopClock(false)
               toast.dismiss(t.id)
             }}
             className={styles.ButtonConfirm}

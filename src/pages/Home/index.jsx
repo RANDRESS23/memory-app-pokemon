@@ -6,6 +6,7 @@ import StatsBar from '../../components/StatsBar'
 
 export default function Home () {
   const [amountOfChanges, setAmountOfChanges] = useState(0)
+  const [stopClock, setStopClock] = useState(false)
 
   return (
     <div className={styles.Container}>
@@ -13,8 +14,13 @@ export default function Home () {
       <StatsBar
         amountOfChanges={amountOfChanges}
         setAmountOfChanges={setAmountOfChanges}
+        stopClock={stopClock}
+        setStopClock={setStopClock}
       />
-      <PokemonBoard amountOfChanges={amountOfChanges} />
+      <PokemonBoard
+        amountOfChanges={amountOfChanges}
+        setStopClock={setStopClock}
+      />
     </div>
   )
 }
