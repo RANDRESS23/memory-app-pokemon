@@ -1,4 +1,4 @@
-import loveIcon from '../../assets/img/love-icon.png'
+import loveIcon from '../../assets/img/love-icon.webp'
 import styles from './Footer.module.css'
 
 export default function Footer () {

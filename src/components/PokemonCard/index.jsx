@@ -1,5 +1,5 @@
 import { typeColors } from '../../constants/TypeColorsPokemon'
-import pokeball from '../../assets/img/pokeball.png'
+import pokeball from '../../assets/img/pokeball.webp'
 import styles from './PokemonCard.module.css'
 
 export default function PokemonCard ({ tag, name, image, principalType, isActive, handleActivePokemon }) {
