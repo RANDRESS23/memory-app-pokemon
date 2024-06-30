@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export default function UseRandomIdsPokemons ({ amountPokemons = 8, amountOfChanges } = {}) {
+export default function UseRandomIdsPokemons ({ amountPokemons = 9, amountOfChanges } = {}) {
   const [randomIds, setRandomIds] = useState([])
   const [loadingIds, setLoadingIds] = useState(true)
 
