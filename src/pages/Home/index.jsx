@@ -12,16 +12,18 @@ export default function Home () {
   return (
     <div className={styles.Container}>
       <Header />
-      <StatsBar
-        amountOfChanges={amountOfChanges}
-        setAmountOfChanges={setAmountOfChanges}
-        stopClock={stopClock}
-        setStopClock={setStopClock}
-      />
-      <PokemonBoard
-        amountOfChanges={amountOfChanges}
-        setStopClock={setStopClock}
-      />
+      <main className={styles.Container2}>
+        <StatsBar
+          amountOfChanges={amountOfChanges}
+          setAmountOfChanges={setAmountOfChanges}
+          stopClock={stopClock}
+          setStopClock={setStopClock}
+        />
+        <PokemonBoard
+          amountOfChanges={amountOfChanges}
+          setStopClock={setStopClock}
+        />
+      </main>
       <Footer />
     </div>
   )
